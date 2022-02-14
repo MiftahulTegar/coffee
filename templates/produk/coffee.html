@@ -1,0 +1,20 @@
+{% extends "login/nav1.html" %}
+{% block body_block %}
+
+<br> <br> <br> <br> <br> <br> <br>
+<form class="card mt-4" method="post" style="background-image: url('/static/dashboard/images/img_1.jpg');">
+    <h2 style='text-align:center'> Coffee </h2>
+</form>
+<div class="row">
+    {% for i in a %}
+    <div class="col">
+        <form class="card mt-4" method="post" style="background-image: url('/static/dashboard/images/1.jpg');">
+            <img alt="" src="{{media_url}}{{ i.image }}" style="width: 252px; height:298px;"> 
+            <h3 style='text-align:center' class="cursive-font primary-color"> <a href="{{ i.get_absolute_url }}"> {{i.nama}} </a> </h3>
+            <p style="text-align:center"><a class="btn btn-default" href="#" role="button">{{ i.harga }}</a></p>
+        </form>
+    </div>
+    {% endfor %} 
+</div>
+
+{% endblock %}

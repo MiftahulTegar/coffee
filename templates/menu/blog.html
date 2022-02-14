@@ -1,0 +1,26 @@
+{% extends "login/nav1.html" %}
+{% load static %}{% block body_block %}
+
+<br> <br> <br> <br> <br> <br> <br>
+<form class="card mt-4" method="post" style="background-image: url('/static/dashboard/images/b.jpg');">
+    <h1 class="cursive-font primary-color" style="text-align:center"> My Blog <span>.</span> </h1>
+</form>
+    {% for post in posts %}
+    <form class="card mt-4" method="post" style="background-image: url('/static/dashboard/images/b.jpg');">
+        <h2>
+            <a href="{{ post.get_absolute_url }}">
+                {{ post.nama }}
+            </a>
+        </h2>
+        <p class="date">
+            Diupdate tanggal {{ post.updated }}
+        </p>
+        {{ post.deskripsi|truncatewords:30|linebreaks }}
+    </form>
+        {% endfor %}
+    <form class="card mt-4" method="post" style="background-image: url('/static/dashboard/images/b.jpg');">
+        {% include 'menu/paginator.html' with  page=posts %}
+    </form>
+</form>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "akun/base.html" %}
+{% block body_block %}
+
+<div class="limiter" style="width:80%;">
+	<div class="wrap-login100">
+		<div class="login100-pic js-tilt" data-tilt>
+			<img src= "/media/logo/logo.png">
+		</div>
+		
+		<form method="post" action="{% url 'account:user_login' %}" class="login100-form validate-form">
+			<h1>Log-in</h1>
+
+			<form action="{% url 'account:user_login' %}" method="post">
+				{{ form.as_p }}
+				{% csrf_token %}	
+				<input type="hidden" name="next" value="{{ next }}" />
+				<p><input type="submit" value="Log-in"></p>
+				<p><a class="txt2" href="{%url 'account:password_reset' %}">Password?</a></p>
+			</form>
+		</form>
+	</div>
+</div>
+
+{% endblock %}

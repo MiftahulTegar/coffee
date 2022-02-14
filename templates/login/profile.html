@@ -1,0 +1,30 @@
+{% extends "login/nav1.html" %}
+{% load static %}{% block body_block %}
+
+<br> <br> <br> <br> <br> <br> <br>
+<form class="card mt-4" method="post" style="background-image: url('/static/dashboard/images/img_1.jpg');" enctype="multipart/form-data">
+	<h1 style='text-align:center'>Profile</h1>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 img">
+                {% for a in img %}
+                <img alt="" class="img" src="{{media_url}}{{ a.foto_profil }}" style="width: 250px; height:250px; border: 5px solid white">
+                {% endfor %} 
+            </div>
+            <div class="col-md-6 details">
+                <blockquote> 
+                    {% if user.is_authenticated %}
+                    <h3> {{ user.first_name }} {{ user.last_name }} </h3>
+                    <small><cite title="Source Title">  {{ user.userprofileinfo.Tanggal_Lahir }} </cite></small>
+                    <small><cite title="Source Title">  {{ user.userprofileinfo.telepon }} </cite></small>
+                    <small><cite title="Source Title">  {{ user.email }} </cite></small>
+                    <small><cite title="Source Title">  {{ user.userprofileinfo.alamat }} <i class="icon-map-marker"></i></cite></small>
+                    {% else %}
+                    {% endif %}
+                </blockquote>
+            </div>
+        </div>
+    </div>
+</form>
+    
+{% endblock %}

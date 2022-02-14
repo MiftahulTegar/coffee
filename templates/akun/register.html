@@ -1,0 +1,22 @@
+{% extends "akun/base.html" %}
+{% load static %}{% block body_block %}
+
+<div class="limiter" style="width:50%;">
+  <div class="wrap-login100">
+      {% if registered %}
+        <h1>Terima kasih telah registrasi!</h1>
+      {% else %}
+      <form method="post">
+        <h1>Register Disini</h1>
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        {{ user_form.as_p }}
+        <div class="container-login100-form-btn">
+          <input class="login100-form-btn" type="submit" name="" value="Register">
+        </div>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+
+{% endblock %}

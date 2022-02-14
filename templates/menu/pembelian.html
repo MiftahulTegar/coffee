@@ -1,0 +1,63 @@
+{% extends "login/nav2.html" %}
+{% load static %}{% block body_block %}
+
+<br> <br> <br> <br> <br> <br> <br>
+<header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner">
+    <div class="overlay"></div>
+        <div class="gtco-container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 text-left">
+                    <div class="row row-mt-15em">
+                        <div class="col-md-7 mt-text animate-box" data-animate-effect="fadeInUp">
+                           <h1 class="cursive-font" style='text-align:center'>Coffee Shop</h1>	
+                        </div>
+                        <div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+                            <div class="form-wrap">
+                                <div class="tab">
+                                    
+                                    <div class="tab-content">
+                                        <div class="tab-content-inner active" data-content="signup">
+                                            <h3 class="cursive-font">Silahkan Pilih</h3>
+                                            <form action="#">
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="activities">Menu</label>
+                                                        <select name="#" id="activities" class="form-control">
+                                                            {% for i in a %}
+                                                                <option href="{{ i.get_absolute_url }}"> {{i.nama}} Harga {{ i.harga }} </option>
+                                                            {% endfor %} 
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="date-start">Telepon</label>
+                                                        <input type="text" id="text" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <label for="date-start">Alamat</label>
+                                                        <input type="text" id="text" class="form-control">
+                                                    </div>
+                                                </div>
+
+                                                <div class="row form-group">
+                                                    <div class="col-md-12">
+                                                        <input type="submit" class="btn btn-primary btn-block" value="Reserve Now">
+                                                    </div>
+                                                </div>
+                                            </form>	
+                                        </div>                               
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </div>
+        </div>
+    </header>
+
+    {% endblock %}

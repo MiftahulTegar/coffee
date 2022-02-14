@@ -1,0 +1,47 @@
+{% extends "login/nav1.html" %}
+{% load static %}{% block body_block %}
+{% block title %} {{ post.title }} {% endblock %}
+
+<br> <br> <br> <br> <br> <br> <br>
+<form class="card mt-4" method="post" style="background-image: url('/static/dashboard/images/b.jpg');">
+    <h1> <a href="{{ post.get_absolute_url }}">
+        {{ post.nama }} </a>
+    </h1>
+    <p class="date">
+        Diupdate {{ post.updated }}
+    </p>
+    <img alt="" src="{{media_url}}{{ post.image }}" style="width: 252px; height:298px;"> <br>
+    {{ post.deskripsi|linebreaks }}
+
+{% with comments.count as total_comments %}
+<h2>
+    {{ total_comments }} Komentar{{ total_comments|pluralize }}
+</h2>   
+{% endwith %}
+
+{% for comment in comments %}
+    <div class="comment">
+        <p class="info">
+            Komentar {{ forloop.counter }} dari {{ comment.nama }}
+            {{ comment.created }}
+        </p>
+        {{ comment.body|linebreaks }}
+    </div>
+{% empty %}
+    <p> Tidak ada komentar.</p>
+{% endfor %}
+{% if new_comment %}
+    <h2>Komentar anda berhasil ditambahkan.</h2>
+{% else %}
+
+    <h2>Tambahkan Komentar</h2>
+    <form method="post">
+        {{ comment_form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Add comment"></p>
+    </form>
+    
+{% endif %}
+</form>
+
+{% endblock %}

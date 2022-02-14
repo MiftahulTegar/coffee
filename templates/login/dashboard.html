@@ -1,0 +1,20 @@
+{% extends "login/nav1.html" %}
+{% load static %}{% block body_block %}
+
+	<div id="fh5co-about" class="fh5co-section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-5 col-md-push-1 animate-box">
+					<div class="section-heading">
+                        <form method="post">
+                            {{ form.as_p }}
+                            <p><input type="submit" value="Change"></p>
+                            {% csrf_token %}
+                        </form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
+
+{% endblock %}
